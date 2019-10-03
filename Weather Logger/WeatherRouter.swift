@@ -6,4 +6,29 @@
 //  Copyright © 2019 burak kaya. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+protocol WeatherRouterProtocol: class {
+    func navigate(to route:WeatherRoute)
+}
+
+
+enum WeatherRoute{
+    case detail(weatherInfo)
+}
+
+final class WeatherRouter: WeatherRouterProtocol {
+    unowned let viewController: UIViewController
+    init(view: UIViewController) {
+        self.viewController = view
+    }
+    
+    func navigate(to route: WeatherRoute) {
+//        switch route {
+//        case .detail(let weather):
+//            let detailView = we
+//        default:
+//            <#code#>
+//        }
+    }
+}
