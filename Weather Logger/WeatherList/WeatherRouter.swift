@@ -18,17 +18,16 @@ enum WeatherRoute{
 }
 
 final class WeatherRouter: WeatherRouterProtocol {
-    unowned let viewController: UIViewController
+    unowned let view: UIViewController
     init(view: UIViewController) {
-        self.viewController = view
+        self.view = view
     }
     
     func navigate(to route: WeatherRoute) {
-//        switch route {
-//        case .detail(let weather):
-//            let detailView = we
-//        default:
-//            <#code#>
-//        }
+        switch route {
+        case .detail(let weather):
+            let detailView = DetailBuilder.build(with : weather)
+            view.show(detailView, sender: nil)
+        }
     }
 }

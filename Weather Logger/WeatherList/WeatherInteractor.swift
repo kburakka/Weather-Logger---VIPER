@@ -8,16 +8,20 @@
 import CoreData
 import UIKit
 import Foundation
+import CoreLocation
+import SwiftyJSON
+
+var weatherInfos = [weatherInfo]()
 
 final class WeatherInteractor: WeatherInteractorProtocol {
-    
+
     weak var delagete: WeatherInteractorDelegate?
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    var weatherInfos = [weatherInfo]()
 
     func viewDidLoad() {
         delagete?.handleOutput(.setLoading(true))
+        
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Weather")
         request.returnsObjectsAsFaults = false
@@ -33,7 +37,6 @@ final class WeatherInteractor: WeatherInteractorProtocol {
                 let main = data.value(forKey: "main") as! String
                 let windSpeed = data.value(forKey: "windSpeed") as! Float
                 weatherInfos.append(weatherInfo(name: name, country: country, temp: temp, date: date, windSpeed: windSpeed, main: main))
-                print(weatherInfo(name: name, country: country, temp: temp, date: date, windSpeed: windSpeed, main: main))
             }
             self.delagete?.handleOutput(.showWeatherList(weatherInfos))
 
@@ -47,5 +50,15 @@ final class WeatherInteractor: WeatherInteractorProtocol {
         delagete?.handleOutput(.showWeatherDetail(weather))
     }
     
+    func getWeatherInfo(location: CLLocationCoordinate2D){
+        delagete?.handleOutput(.getWeatherInfo(location))
+    }
     
+    func saveToDataBase(weatherJson: JSON) {
+        delagete?.handleOutput(.saveToDataBase(weatherJson))
+    }
+    
+    func loadToArray() {
+        delagete?.handleOutput(.loadToArray)
+    }
 }
