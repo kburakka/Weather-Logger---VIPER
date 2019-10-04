@@ -11,6 +11,7 @@ import CoreData
 
 final class WeatherPresenter :WeatherPresenterProtocol {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private unowned let view: WeatherViewProtocol?
     private let interactor: WeatherInteractorProtocol
     private let router: WeatherRouterProtocol
@@ -59,8 +60,6 @@ final class WeatherPresenter :WeatherPresenterProtocol {
         return currentDate
     }
     
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
     func saveToDataBase(weatherJson: JSON, completionHandler: @escaping () -> ()) {
         var degree = Float()
         
@@ -120,12 +119,6 @@ extension WeatherPresenter:WeatherInteractorDelegate{
             view?.handleOutput(.showWeatherList(weathers))
         case .showWeatherDetail(let weather):
             router.navigate(to: .detail(weather))
-        case .getWeatherInfo(let location):
-            view?.handleOutput(.getWeatherInfo(location))
-        case .saveToDataBase(let json):
-            view?.handleOutput(.saveToDataBase(json))
-        case .loadToArray:
-            view?.handleOutput(.loadToArray)
         }
     }
 }

@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 final class DetailBuilder {
     static  func build(with weather: weatherInfo) -> DetailViewController {
         let storyboard = UIStoryboard.init(name:"Main", bundle: nil)

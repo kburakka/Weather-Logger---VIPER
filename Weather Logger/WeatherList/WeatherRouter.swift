@@ -8,15 +8,6 @@
 
 import UIKit
 
-protocol WeatherRouterProtocol: class {
-    func navigate(to route:WeatherRoute)
-}
-
-
-enum WeatherRoute{
-    case detail(weatherInfo)
-}
-
 final class WeatherRouter: WeatherRouterProtocol {
     unowned let view: UIViewController
     init(view: UIViewController) {

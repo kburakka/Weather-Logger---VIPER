@@ -37,7 +37,7 @@ final class DetailViewController: UIViewController, DetailViewProtocol {
             view.addSubview(key)
             
             
-            let value = UILabel(frame: CGRect(x: 130, y: 100+(index*48), width: 115, height: 32))
+            let value = UILabel(frame: CGRect(x: 130, y: 100+(index*48), width: Int(view.frame.size.width) - 150, height: 32))
             value.textAlignment = .left
             value.textColor = .white
             value.text = " :   \(child.value)"

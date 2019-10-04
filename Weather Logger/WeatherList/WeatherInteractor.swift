@@ -11,7 +11,6 @@ import Foundation
 import CoreLocation
 import SwiftyJSON
 
-var weatherInfos = [weatherInfo]()
 
 final class WeatherInteractor: WeatherInteractorProtocol {
 
@@ -48,17 +47,5 @@ final class WeatherInteractor: WeatherInteractorProtocol {
     func selectWeather(at index: Int) {
         let weather = weatherInfos[index]
         delagete?.handleOutput(.showWeatherDetail(weather))
-    }
-    
-    func getWeatherInfo(location: CLLocationCoordinate2D){
-        delagete?.handleOutput(.getWeatherInfo(location))
-    }
-    
-    func saveToDataBase(weatherJson: JSON) {
-        delagete?.handleOutput(.saveToDataBase(weatherJson))
-    }
-    
-    func loadToArray() {
-        delagete?.handleOutput(.loadToArray)
     }
 }

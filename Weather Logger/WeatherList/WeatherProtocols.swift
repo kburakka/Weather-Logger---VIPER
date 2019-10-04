@@ -24,11 +24,17 @@ enum WeatherListPresenterOutput {
     case setLoading(Bool)
     case updateTitle(String)
     case showWeatherList([weatherInfo])
-    case getWeatherInfo(CLLocationCoordinate2D)
-    case saveToDataBase(JSON)
-    case loadToArray
 }
 
+
+//Router
+protocol WeatherRouterProtocol: class {
+    func navigate(to route:WeatherRoute)
+}
+
+enum WeatherRoute{
+    case detail(weatherInfo)
+}
 
 
 // Interector
@@ -36,30 +42,29 @@ protocol WeatherInteractorProtocol : class{
     var delagete: WeatherInteractorDelegate? { get set }
     func viewDidLoad()
     func selectWeather(at index: Int)
-    func getWeatherInfo(location : CLLocationCoordinate2D)
-    func saveToDataBase(weatherJson : JSON)
-    func loadToArray()
 }
 
 enum WeatherInteractorOutput {
     case setLoading(Bool)
     case showWeatherList([weatherInfo])
     case showWeatherDetail(weatherInfo)
-    case getWeatherInfo(CLLocationCoordinate2D)
-    case saveToDataBase(JSON)
-    case loadToArray
 }
 
 protocol WeatherInteractorDelegate : class{
     func handleOutput(_ output:WeatherInteractorOutput)
 }
 
+
 // View
 protocol WeatherViewProtocol: class {
     func handleOutput(_ output :WeatherListPresenterOutput )
 }
 
+
+// Environment
 let apiKey = "00f368c25fc7658e428daf3bc4281b36"
+var weatherInfos = [weatherInfo]()
+
 struct weatherInfo {
     let name : String
     let country : String

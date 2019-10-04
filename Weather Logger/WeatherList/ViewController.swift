@@ -11,7 +11,6 @@ import CoreLocation
 import SwiftyJSON
 import CoreData
 
-
 final class ViewController: UIViewController,WeatherViewProtocol,CLLocationManagerDelegate{
     @IBOutlet weak var tableView: UITableView!
     let locationManager : CLLocationManager = CLLocationManager()
@@ -69,12 +68,6 @@ final class ViewController: UIViewController,WeatherViewProtocol,CLLocationManag
             UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
         case .showWeatherList(let movies):
             weatherInfos = movies
-            tableView.reloadData()
-        case .getWeatherInfo(let location):
-            print(location)
-        case .saveToDataBase(let json):
-            print(json)
-        case .loadToArray:
             tableView.reloadData()
         }
     }

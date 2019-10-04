@@ -146,7 +146,7 @@
                     <view key="view" contentMode="scaleToFill" id="WEe-bo-wa0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.094315791669999996" green="0.1615102541" blue="0.20235168149999999" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="RVh-v1-FHK"/>
                     </view>
                     <navigationItem key="navigationItem" id="eJT-9g-peq"/>

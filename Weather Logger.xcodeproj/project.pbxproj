@@ -33,7 +33,7 @@
 
 /* Begin PBXFileReference section */
 		43F993005BEFFEDAF6AB552B /* Pods-Weather Logger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather Logger.release.xcconfig"; path = "Target Support Files/Pods-Weather Logger/Pods-Weather Logger.release.xcconfig"; sourceTree = "<group>"; };
-		6710DA6D234508F40069CF5B /* Weather Logger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather Logger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6710DA6D234508F40069CF5B /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6710DA70234508F40069CF5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6710DA72234508F40069CF5B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6710DA74234508F40069CF5B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 		6710DA6E234508F40069CF5B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6710DA6D234508F40069CF5B /* Weather Logger.app */,
+				6710DA6D234508F40069CF5B /* Weather.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,17 +94,17 @@
 		6710DA6F234508F40069CF5B /* Weather Logger */ = {
 			isa = PBXGroup;
 			children = (
+				67E76E99234742A500057378 /* Database */,
+				67E76E972347424B00057378 /* Map */,
 				67E76E8C234733D700057378 /* WeatherDetail */,
 				67E76E8B2347339200057378 /* WeatherList */,
 				6710DA8B234529E90069CF5B /* Views */,
 				6710DA70234508F40069CF5B /* AppDelegate.swift */,
 				6710DA72234508F40069CF5B /* SceneDelegate.swift */,
-				6710DA76234508F40069CF5B /* Main.storyboard */,
 				6710DA7C234508F60069CF5B /* Assets.xcassets */,
+				6710DA76234508F40069CF5B /* Main.storyboard */,
 				6710DA7E234508F60069CF5B /* LaunchScreen.storyboard */,
 				6710DA81234508F60069CF5B /* Info.plist */,
-				6710DA79234508F40069CF5B /* Weather_Logger.xcdatamodeld */,
-				6710DA982345D2970069CF5B /* MapViewController.swift */,
 				67E76E89234690B200057378 /* InitialViewController.swift */,
 			);
 			path = "Weather Logger";
@@ -143,6 +143,22 @@
 			path = WeatherDetail;
 			sourceTree = "<group>";
 		};
+		67E76E972347424B00057378 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				6710DA982345D2970069CF5B /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		67E76E99234742A500057378 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				6710DA79234508F40069CF5B /* Weather_Logger.xcdatamodeld */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		713B43F3B5DFF408B7DCCAEF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,7 +195,7 @@
 			);
 			name = "Weather Logger";
 			productName = "Weather Logger";
-			productReference = 6710DA6D234508F40069CF5B /* Weather Logger.app */;
+			productReference = 6710DA6D234508F40069CF5B /* Weather.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -445,7 +461,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "burak.Weather-Logger";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Weather;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -464,7 +480,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "burak.Weather-Logger";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Weather;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

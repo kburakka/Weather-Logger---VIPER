@@ -18,41 +18,36 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapTitle: UILabel!
     
-    func handleOutput(_ output: WeatherListPresenterOutput) {
-                switch output {
-        case .updateTitle(let title):
-            self.title = title
-        case .setLoading(let isLoading):
-            UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
-        case .showWeatherList(let movies):
-            weatherInfos = movies
-        case .getWeatherInfo(let location):
-            print(location)
-        case .saveToDataBase(let json):
-            print(json)
-        case .loadToArray:
-            print("yes")
-        }
-    }
     
-    var currentIndex = 0
     struct weatherMap {
         let type : String
         let alias : String
     }
+    
+    var currentIndex = 0
     
     let pressure = weatherMap(type: "pressure_new", alias: "Pressure")
     let wind = weatherMap(type: "wind_new", alias: "Wind Speed")
     let temp = weatherMap(type: "temp_new", alias: "Temperature")
     let precipitation = weatherMap(type: "precipitation_new", alias: "Precipitation")
     var weatherMaps = [weatherMap]()
-    
     var gestureRecognizer : UITapGestureRecognizer = UITapGestureRecognizer()
     
     
+    func handleOutput(_ output: WeatherListPresenterOutput) {
+        switch output {
+        case .updateTitle(let title):
+            self.title = title
+        case .setLoading(let isLoading):
+            UIApplication.shared.isNetworkActivityIndicatorVisible = isLoading
+        case .showWeatherList(let movies):
+            weatherInfos = movies
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         weatherMaps = [pressure,wind,temp,precipitation]
         
         setupTile(weatherMap: pressure)
@@ -61,10 +56,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
         gestureRecognizer.delegate = self
         mapView.addGestureRecognizer(gestureRecognizer)
     }
-
+    
     func showAlert(coordinate : CLLocationCoordinate2D){
         let alert = UIAlertController(title: "Weather Save", message: "Do you want to save weather info of this location?", preferredStyle: UIAlertController.Style.alert)
-
+        
         alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (action: UIAlertAction!) in
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
@@ -77,11 +72,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
                 }
             }
         }))
-
+        
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
             alert.dismiss(animated: true, completion: nil)
         }))
-
+        
         present(alert, animated: true, completion: nil)
     }
     
@@ -112,7 +107,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
         let template = "https://tile.openweathermap.org/map/\(weatherMap.type)/{z}/{x}/{y}.png?appid=\(apiKey)"
         
         let overlay = MKTileOverlay(urlTemplate: template)
-
+        
         mapView.addOverlay(overlay)
         self.mapTitle.text = weatherMap.alias
     }
